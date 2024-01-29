@@ -1,0 +1,27 @@
+
+version: "3.1"
+
+services:
+  web:
+    container_name: mequidonalds-api
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    depends_on:
+      postgres:
+        condition: service_completed_successfully
+    environment:
+      # DATABASE_URL: postgres://user:password@db:5432/database_name
+      DATABASE_URL: postgres://${DB_USER}:${DB_PASSWORD}@postgres:5432/mequidonalds
+    ports:
+      - "3000:3000"
+  postgres:
+    container_name: postgres
+    image: postgres:16
+    ports:
+      - "5432:5432"
+    restart: always
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
