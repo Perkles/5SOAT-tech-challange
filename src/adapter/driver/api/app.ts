@@ -40,6 +40,7 @@ const filaPedidosController = new FilaPedidosController(filaPedidosService)
 // Clientes
 app.post(`${prefix}/cliente/cadastro-simples`, clienteController.cadastraClienteNomeEmail.bind(clienteController));
 app.post(`${prefix}/cliente/cadastro-cpf`, clienteController.cadastraClienteCpf.bind(clienteController));
+app.get(`${prefix}/cliente/busca-cpf/:cpf`, clienteController.buscaPorCpf.bind(clienteController));
 
 // Produtos
 app.get(`${prefix}/produto/busca/:categoria`, produtoController.buscaProdutoPorCategoria.bind(produtoController));

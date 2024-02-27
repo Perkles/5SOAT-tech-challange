@@ -1,4 +1,5 @@
 import { Cliente } from "../../domain/entities/Cliente";
+import { Cpf } from "../../domain/valueObjects/Cpf.vo";
 import { ClienteRepository } from "../ports/Cliente.repository";
 
 export class ClienteService {
@@ -17,5 +18,9 @@ export class ClienteService {
     async clienteAnonimo(cliente: Cliente): Promise<Cliente> {
         let novoCliente = new Cliente({})
         return await this.clienteRepository.salvaCliente(novoCliente);
+    }
+
+    async buscaClienteCpf(cpf: Cpf): Promise<Cliente | undefined> {
+        return await this.clienteRepository.buscaClientePorCpf(cpf);
     }
 }
