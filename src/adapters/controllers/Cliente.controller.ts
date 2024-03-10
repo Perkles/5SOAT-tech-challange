@@ -2,7 +2,7 @@ import { ClienteRepository } from "../../core/applications/ports/Cliente.reposit
 import { ClienteUseCase } from "../../core/domain/useCases/ClienteUseCase";
 import { ClienteDTO, ClienteNomeEmailDTO } from "../../drivers/driver/api/dto/cliente.dto";
 import { ClienteAdapterGateway } from "../gateways/Cliente.gateway";
-import { ClientePresenter } from "../presenters/cliente.presenter";
+import { ClientePresenter } from "../presenters/Cliente.presenter";
 
 export class ClienteAdapterController {
 
