@@ -1,12 +1,12 @@
 {
   "name": "mequidonalds",
   "version": "0.0.0",
-  "description": "Entregavel 2 fase 1 da turma 5SOAT da pós graduação em Arquitetura de Software - FIAP 2024",
-  "main": "src/adapter/driver/api/app.ts",
+  "description": "Projeto de Pós Graduação em Arquitetura de Software - turma 5SOAT - FIAP 2024",
+  "main": "src/drivers/driver/api/app.ts",
   "scripts": {
     "build": "npx tsc",
-    "start": "node dist/adapter/driver/api/app.js",
-    "dev": "nodemon src/adapter/driver/api/app.ts"
+    "start": "node dist/drivers/driver/api/app.ts",
+    "dev": "nodemon src/drivers/driver/api/app.ts"
   },
   "author": "Perkles",
   "license": "ISC",
