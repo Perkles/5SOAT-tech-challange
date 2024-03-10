@@ -2,14 +2,14 @@ import dotenv from 'dotenv'
 import bodyParser from 'body-parser';
 import express, { Express } from "express";
 import { ClienteService } from "../../../core/applications/services/Cliente.service";
-import { ClienteController } from "./controllers/Cliente.controller";
+import { ClienteApiController } from "./controllers/Cliente.controller";
 import { ProdutoService } from "../../../core/applications/services/Produto.service";
 import { ProdutoController } from "./controllers/Produto.controller";
 import { PedidoService } from "../../../core/applications/services/Pedido.service";
 import { PedidoController } from "./controllers/Pedido.controller";
 import { FilaPedidosService } from "../../../core/applications/services/FilaPedido.service";
 import { FilaPedidosController } from "./controllers/FilaPedidos.controller";
-import ClienteRepositoryAdapter from '../../driven/postgres/repositories/Cliente.repository.adapter';
+import ClienteRepositoryPostgresDriver from '../../driven/postgres/repositories/Cliente.repository.driver';
 import sequelize from '../../driven/postgres/config/Database.config';
 import ProdutoRepositoryAdapter from '../../driven/postgres/repositories/Produto.repository.adapter';
 import PedidoRepositoryAdapter from '../../driven/postgres/repositories/Pedido.repository.adapter';
@@ -21,16 +21,16 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const prefix = "/api/v1"
 const porta = process.env.API_PORT;
 
-const clienteRpository = new ClienteRepositoryAdapter()
-const clienteService = new ClienteService(clienteRpository)
-const clienteController = new ClienteController(clienteService);
+const clienteRepositoryPostgresDriver = new ClienteRepositoryPostgresDriver()
+// const clienteService = new ClienteService(clienteRepositoryPostgresDriver)
+const clienteController = new ClienteApiController(clienteRepositoryPostgresDriver);
 
 const produtoRepository = new ProdutoRepositoryAdapter()
 const produtoService = new ProdutoService(produtoRepository)
 const produtoController = new ProdutoController(produtoService)
 
 const pedidoRepository = new PedidoRepositoryAdapter()
-const pedidoService = new PedidoService(pedidoRepository, clienteRpository, produtoRepository)
+const pedidoService = new PedidoService(pedidoRepository, clienteRepositoryPostgresDriver, produtoRepository)
 const pedidoController = new PedidoController(pedidoService)
 
 const filaPedidosRepository = new FilaPedidoRepositoryAdapter()
@@ -38,8 +38,9 @@ const filaPedidosService = new FilaPedidosService(filaPedidosRepository, pedidoR
 const filaPedidosController = new FilaPedidosController(filaPedidosService)
 
 // Clientes
-app.post(`${prefix}/cliente/cadastro-simples`, clienteController.cadastraClienteNomeEmail.bind(clienteController));
+
 app.post(`${prefix}/cliente/cadastro-cpf`, clienteController.cadastraClienteCpf.bind(clienteController));
+app.post(`${prefix}/cliente/cadastro-simples`, clienteController.cadastraClientePorNomeEmail.bind(clienteController));
 app.get(`${prefix}/cliente/busca-cpf/:cpf`, clienteController.buscaPorCpf.bind(clienteController));
 
 // Produtos

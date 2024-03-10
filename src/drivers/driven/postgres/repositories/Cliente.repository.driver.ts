@@ -4,7 +4,7 @@ import { Cpf } from "../../../../core/domain/valueObjects/Cpf.vo";
 import { ClienteMapperDb } from "../mappers/Cliente.mapper.db";
 import { ClienteModel } from "../models/Cliente.model";
 
-export default class ClienteRepositoryAdapter implements ClienteRepository {
+export default class ClienteRepositoryPostgresDriver implements ClienteRepository {
 
     async buscaClientePorId(id: number): Promise<Cliente | undefined> {
         const clienteModel = await ClienteModel.findByPk(id)
