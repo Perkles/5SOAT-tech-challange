@@ -10,7 +10,7 @@ import { ProdutoUseCase } from "./Produto.usecase";
 
 export class PedidoUsecase {
     
-    static async criaNovoPedido(idCliente: number, idProdutos: number[], pedidoGateway: PedidoAdapterGateway, produtoGateway: ProdutoAdapterGateway, clienteGateway: ClienteAdapterGateway): Promise<boolean> {
+    static async criaNovoPedido(idCliente: number, idProdutos: number[], pedidoGateway: PedidoAdapterGateway, produtoGateway: ProdutoAdapterGateway, clienteGateway: ClienteAdapterGateway): Promise<Pedido | undefined> {
         let produtos: Produto[] = []
         const clienteExistente = await ClienteUseCase.buscaClientePorId(idCliente, clienteGateway)
         if(!clienteExistente){
@@ -24,7 +24,7 @@ export class PedidoUsecase {
                 produtos.push(produtoExistente)
             }
         }
-        const novoPedido = PedidoFactory.montaPedido(clienteExistente, produtos)
+        const novoPedido = PedidoFactory.montaNovoPedido(clienteExistente, produtos)
         return await pedidoGateway.novoPedido(novoPedido)
     }
 

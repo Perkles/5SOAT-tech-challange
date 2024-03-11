@@ -1,7 +1,6 @@
 import { BelongsToManyAddAssociationsMixin, BelongsToManyGetAssociationsMixin, BelongsToSetAssociationMixin, DataTypes, Model } from "sequelize";
 import sequelize from "../config/Database.config";
 import { ProdutoModel } from "./Produto.model";
-import { ClienteModel } from "./Cliente.model";
     
 export class PedidoModel extends Model {
     declare id: number;

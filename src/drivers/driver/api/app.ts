@@ -44,8 +44,8 @@ app.delete(`${prefix}/administrativo/produto/deleta/:id`, produtoController.dele
 
 // Expedição - Preparo e execução do pedido e sua retirada
 
-app.post(`${prefix}/expedicao/controle-producao/novo`, pedidoController.novoPedido.bind(pedidoController));
 // /expedicao/acompanhamento-pedido/pedidos
+app.post(`${prefix}/expedicao/controle-producao/novo`, pedidoController.novoPedido.bind(pedidoController));
 // /expedicao/controle-producao/preparacao
 // /expedicao/controle-producao/pronto
 // /expedicao/controle-producao/finalizado

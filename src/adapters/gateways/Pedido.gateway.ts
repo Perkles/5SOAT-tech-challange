@@ -10,7 +10,7 @@ export class PedidoAdapterGateway implements AdapterGateway {
         this.datasource = datasource;
     }
 
-    async novoPedido(pedido: Pedido): Promise<boolean> {
+    async novoPedido(pedido: Pedido): Promise<Pedido | undefined> {
         return await (this.datasource as PedidoRepository).salvaPedido(pedido)
     }
 }

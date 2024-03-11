@@ -8,16 +8,16 @@ export class Pedido extends AssertionConcern implements Entidade {
     id?: number
     itens: Produto[]
     cliente: Cliente
-    private status: StatusPedidoEnum
+    status: StatusPedidoEnum
     private valorTotal: number
     
-    constructor(itens: Produto[], cliente: Cliente, id?: number){
+    constructor(itens: Produto[], cliente: Cliente, status: StatusPedidoEnum, id?: number){
         super()
         
         this.id = id
         this.itens = itens
         this.cliente = cliente
-        this.status = StatusPedidoEnum.recebido
+        this.status = status
         this.valorTotal = this.calculaValorTotal(this.itens)
 
         this.ValidaEntidade()

@@ -10,7 +10,7 @@ import { ClienteModel } from "../models/Cliente.model";
 
 export default class PedidoRepositoryPostgresDriver implements PedidoRepository {
     
-    async salvaPedido(pedido: Pedido): Promise<boolean> {    
+    async salvaPedido(pedido: Pedido): Promise<Pedido | undefined> {    
         const transaction = await sequelize.transaction();
         try {
             const novoPedido = await PedidoModel.create({
@@ -19,17 +19,16 @@ export default class PedidoRepositoryPostgresDriver implements PedidoRepository 
                 "valorTotal": pedido.retornaValorTotal()
             })
             const produtosModel = ProdutoMapperDb.entitiesToModels(pedido.itens) as ProdutoModel[]
-            novoPedido.addProdutoModels(produtosModel)      
-            transaction.commit()
+            await novoPedido.addProdutoModels(produtosModel)      
+            await transaction.commit()
+            return await this.buscaPedidoPorId(novoPedido.id)
         }catch(error){
             await transaction.rollback();
         }
-        return new Promise((resolve) => {
-            resolve(true)
-        });
     }
-
+    
     async buscaPedidoPorId(id: number): Promise<Pedido | undefined> {
+        // const pedidoModel = await PedidoModel.findByPk(novoPedido.id, {include: { all: true, nested: true } })
         const pedidoModel = await PedidoModel.findByPk(id, {include: [ProdutoModel, ClienteModel]})
         return new Promise((resolve) => {
             resolve(pedidoModel ? PedidoMapperDb.modelToEntity(pedidoModel) as Pedido : undefined)

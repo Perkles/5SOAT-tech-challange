@@ -13,8 +13,10 @@ export class PedidoController {
 
     async novoPedido(request: Request, response: Response) {
         try{
-            const pedido = await PedidoAdapterController.novoPedido(PedidoMapperApi.requestToDto(request), this.pedidoRepository, this.produtoRepository, this.clienteRepository)
-            response.status(200).json({message: "Pedido Cadastrado"})
+            const novoPedido = await PedidoAdapterController.novoPedido(PedidoMapperApi.requestToDto(request), this.pedidoRepository, this.produtoRepository, this.clienteRepository)
+            if(novoPedido){
+                response.status(200).json({message: "Pedido Cadastrado", pedido: novoPedido})
+            }
         }catch(error){
             if(error instanceof DomainException || error instanceof UseCaseException){
                 response.status(400).json({ message: error.message })
