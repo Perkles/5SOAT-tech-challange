@@ -1,6 +1,5 @@
 import { PedidoRepository } from "../../../../core/applications/ports/Pedido.repository";
 import { Pedido } from "../../../../core/domain/entities/Pedido";
-import { StatusPedido } from "../../../../core/domain/valueObjects/StatusPedido.vo";
 import { PedidoMapperDb } from "../mappers/Pedido.mapper.db";
 import { ProdutoMapperDb } from "../mappers/Produto.mapper.db";
 import { PedidoModel } from "../models/Pedido.model";
@@ -9,7 +8,7 @@ import sequelize from "../config/Database.config";
 import { ClienteModel } from "../models/Cliente.model";
 
 
-export default class PedidoRepositoryAdapter implements PedidoRepository {
+export default class PedidoRepositoryPostgresDriver implements PedidoRepository {
     
     async salvaPedido(pedido: Pedido): Promise<boolean> {    
         const transaction = await sequelize.transaction();

@@ -1,14 +1,15 @@
 import { Request } from 'express';
-import { Pedido } from "../../../../core/domain/entities/Pedido";
-import { ProdutoMapperApi } from "./Produto.mapper.api";
-import { Cliente } from '../../../../core/domain/entities/Cliente';
+import { PedidoDto } from '../dto/Pedido.dto';
 
 export class PedidoMapperApi {
     
-    static requestToEntity(request: Request): Pedido {
-        return new Pedido(
-            [ProdutoMapperApi.requestToEntity(request)],
-            new Cliente({})
-        )
+    static requestToDto(request: Request): PedidoDto {
+        // if(request.body.itens && Array.isArray(request.body.itens)){
+        //     const itens = request.body.itens.map(item => return )
+        // }
+        return  {
+            clienteId: request.body.clienteId,
+            itens: request.body.itens
+        }
     }
 }

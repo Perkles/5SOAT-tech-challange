@@ -11,8 +11,8 @@ import { FilaPedidosService } from "../../../core/applications/services/FilaPedi
 import { FilaPedidosController } from "./controllers/FilaPedidos.controller";
 import ClienteRepositoryPostgresDriver from '../../driven/postgres/repositories/Cliente.repository.driver';
 import sequelize from '../../driven/postgres/config/Database.config';
-import ProdutoRepositoryPostgresDriver from '../../driven/postgres/repositories/Produto.repository.adapter';
-import PedidoRepositoryAdapter from '../../driven/postgres/repositories/Pedido.repository.adapter';
+import ProdutoRepositoryPostgresDriver from '../../driven/postgres/repositories/Produto.repository.driver';
+import PedidoRepositoryPostgresDriver from '../../driven/postgres/repositories/Pedido.repository.driver';
 import FilaPedidoRepositoryAdapter from '../../driven/postgres/repositories/FilaPedido.repository.adapter';
 
 const app: Express = express();
@@ -29,29 +29,28 @@ const produtoRepositoryPostgresDriver = new ProdutoRepositoryPostgresDriver()
 const produtoController = new ProdutoApiController(produtoRepositoryPostgresDriver)
 // const produtoService = new ProdutoService(produtoRepositoryPostgresDriver)
 
-const pedidoRepository = new PedidoRepositoryAdapter()
-const pedidoService = new PedidoService(pedidoRepository, clienteRepositoryPostgresDriver, produtoRepositoryPostgresDriver)
-const pedidoController = new PedidoController(pedidoService)
+const pedidoRepositoryPostgresDriver = new PedidoRepositoryPostgresDriver()
+// const pedidoService = new PedidoService(pedidoRepositoryPostgresDriver, clienteRepositoryPostgresDriver, produtoRepositoryPostgresDriver)
+const pedidoController = new PedidoController(pedidoRepositoryPostgresDriver, produtoRepositoryPostgresDriver, clienteRepositoryPostgresDriver)
 
 const filaPedidosRepository = new FilaPedidoRepositoryAdapter()
-const filaPedidosService = new FilaPedidosService(filaPedidosRepository, pedidoRepository)
+const filaPedidosService = new FilaPedidosService(filaPedidosRepository, pedidoRepositoryPostgresDriver)
 const filaPedidosController = new FilaPedidosController(filaPedidosService)
 
-// Clientes
 
-app.post(`${prefix}/cliente/cadastro-cpf`, clienteController.cadastraClienteCpf.bind(clienteController));
-app.post(`${prefix}/cliente/cadastro-simples`, clienteController.cadastraClientePorNomeEmail.bind(clienteController));
-app.get(`${prefix}/cliente/busca-cpf/:cpf`, clienteController.buscaPorCpf.bind(clienteController));
+// Clientes
+app.post(`${prefix}/administrativo/cliente/cadastro-cpf`, clienteController.cadastraClienteCpf.bind(clienteController));
+app.post(`${prefix}/administrativo/cliente/cadastro-simples`, clienteController.cadastraClientePorNomeEmail.bind(clienteController));
+app.get(`${prefix}/administrativo/cliente/busca-cpf/:cpf`, clienteController.buscaPorCpf.bind(clienteController));
 
 // Produtos
-app.post(`${prefix}/produto/novo`, produtoController.novoProduto.bind(produtoController));
-app.get(`${prefix}/produto/busca/:categoria`, produtoController.buscaProdutosPorCategoria.bind(produtoController));
-app.put(`${prefix}/produto/edita`, produtoController.editaProduto.bind(produtoController));
-app.delete(`${prefix}/produto/deleta/:id`, produtoController.deletaProduto.bind(produtoController));
+app.post(`${prefix}/administrativo/produto/novo`, produtoController.novoProduto.bind(produtoController));
+app.get(`${prefix}/administrativo/produto/busca/:categoria`, produtoController.buscaProdutosPorCategoria.bind(produtoController));
+app.put(`${prefix}/administrativo/produto/edita`, produtoController.editaProduto.bind(produtoController));
+app.delete(`${prefix}/administrativo/produto/deleta/:id`, produtoController.deletaProduto.bind(produtoController));
 
-// Pedidos
-app.get(`${prefix}/pedidos`, pedidoController.listaPedidos.bind(pedidoController));
 app.post(`${prefix}/pedido/novo`, pedidoController.novoPedido.bind(pedidoController));
+// app.get(`${prefix}/pedidos`, pedidoController.listaPedidos.bind(pedidoController));
 
 // Fila de Pedidos
 app.post(`${prefix}/checkout/adiciona`, filaPedidosController.adicionaPedidoAFilaDePedidos.bind(filaPedidosController));

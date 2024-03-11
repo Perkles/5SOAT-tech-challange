@@ -18,4 +18,8 @@ export class ClienteAdapterGateway implements AdapterGateway {
     async salvaCliente(cliente: Cliente): Promise<Cliente> {
         return await (this.datasource as ClienteRepository).salvaCliente(cliente)
     }
+
+    async buscaClientePorId(id: number): Promise<Cliente | undefined> {
+        return await (this.datasource as ClienteRepository).buscaClientePorId(id)
+    }
 }

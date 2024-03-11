@@ -28,4 +28,8 @@ export class ClienteUseCase {
     static async buscaClientePorCpf(cpf: string, clienteGateway: ClienteAdapterGateway): Promise<Cliente | undefined> {
         return await clienteGateway.buscaPorCpf(new Cpf(cpf));
     }
+
+    static async buscaClientePorId(id: number, clienteGateway: ClienteAdapterGateway): Promise<Cliente | undefined> {
+        return await clienteGateway.buscaClientePorId(id);
+    }
 }
