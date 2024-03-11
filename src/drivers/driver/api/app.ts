@@ -1,11 +1,8 @@
 import dotenv from 'dotenv'
 import bodyParser from 'body-parser';
 import express, { Express } from "express";
-import { ClienteService } from "../../../core/applications/services/Cliente.service";
 import { ClienteApiController } from "./controllers/Cliente.controller";
-import { ProdutoService } from "../../../core/applications/services/Produto.service";
 import { ProdutoApiController } from "./controllers/Produto.controller";
-import { PedidoService } from "../../../core/applications/services/Pedido.service";
 import { PedidoController } from "./controllers/Pedido.controller";
 import { FilaPedidosService } from "../../../core/applications/services/FilaPedido.service";
 import { FilaPedidosController } from "./controllers/FilaPedidos.controller";
@@ -23,14 +20,11 @@ const porta = process.env.API_PORT;
 
 const clienteRepositoryPostgresDriver = new ClienteRepositoryPostgresDriver()
 const clienteController = new ClienteApiController(clienteRepositoryPostgresDriver);
-// const clienteService = new ClienteService(clienteRepositoryPostgresDriver)
 
 const produtoRepositoryPostgresDriver = new ProdutoRepositoryPostgresDriver()
 const produtoController = new ProdutoApiController(produtoRepositoryPostgresDriver)
-// const produtoService = new ProdutoService(produtoRepositoryPostgresDriver)
 
 const pedidoRepositoryPostgresDriver = new PedidoRepositoryPostgresDriver()
-// const pedidoService = new PedidoService(pedidoRepositoryPostgresDriver, clienteRepositoryPostgresDriver, produtoRepositoryPostgresDriver)
 const pedidoController = new PedidoController(pedidoRepositoryPostgresDriver, produtoRepositoryPostgresDriver, clienteRepositoryPostgresDriver)
 
 const filaPedidosRepository = new FilaPedidoRepositoryAdapter()
@@ -38,22 +32,30 @@ const filaPedidosService = new FilaPedidosService(filaPedidosRepository, pedidoR
 const filaPedidosController = new FilaPedidosController(filaPedidosService)
 
 
-// Clientes
+// Administrativo - Cadastro e disponibilidade dos produtos e Clientes
+
 app.post(`${prefix}/administrativo/cliente/cadastro-cpf`, clienteController.cadastraClienteCpf.bind(clienteController));
 app.post(`${prefix}/administrativo/cliente/cadastro-simples`, clienteController.cadastraClientePorNomeEmail.bind(clienteController));
 app.get(`${prefix}/administrativo/cliente/busca-cpf/:cpf`, clienteController.buscaPorCpf.bind(clienteController));
-
-// Produtos
 app.post(`${prefix}/administrativo/produto/novo`, produtoController.novoProduto.bind(produtoController));
 app.get(`${prefix}/administrativo/produto/busca/:categoria`, produtoController.buscaProdutosPorCategoria.bind(produtoController));
 app.put(`${prefix}/administrativo/produto/edita`, produtoController.editaProduto.bind(produtoController));
 app.delete(`${prefix}/administrativo/produto/deleta/:id`, produtoController.deletaProduto.bind(produtoController));
 
-app.post(`${prefix}/pedido/novo`, pedidoController.novoPedido.bind(pedidoController));
-// app.get(`${prefix}/pedidos`, pedidoController.listaPedidos.bind(pedidoController));
+// Expedição - Preparo e execução do pedido e sua retirada
 
-// Fila de Pedidos
-app.post(`${prefix}/checkout/adiciona`, filaPedidosController.adicionaPedidoAFilaDePedidos.bind(filaPedidosController));
+app.post(`${prefix}/expedicao/controle-producao/novo`, pedidoController.novoPedido.bind(pedidoController));
+// /expedicao/acompanhamento-pedido/pedidos
+// /expedicao/controle-producao/preparacao
+// /expedicao/controle-producao/pronto
+// /expedicao/controle-producao/finalizado
+
+
+// Vendas - Interação do Cliente com a interface de Vendas e pagamento
+
+// /vendas/pagamento -
+// /vendas/pagamento/status
+// /vendas/pagamento/callback_hook
 
 
 sequelize.sync();
