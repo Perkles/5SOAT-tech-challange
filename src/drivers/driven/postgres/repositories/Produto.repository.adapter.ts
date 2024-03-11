@@ -5,7 +5,7 @@ import { ProdutoMapperDb } from "../mappers/Produto.mapper.db";
 import { ImagemModel } from "../models/Imagem.model";
 import { ProdutoModel } from "../models/Produto.model";
 
-export default class ProdutoRepositoryAdapter implements ProdutoRepository {
+export default class ProdutoRepositoryPostgresDriver implements ProdutoRepository {
 
     async buscaProdutoPorId(id: number): Promise<Produto | undefined> {
         const produtoModel = await ProdutoModel.findByPk(id)
@@ -67,11 +67,10 @@ export default class ProdutoRepositoryAdapter implements ProdutoRepository {
         });
     }
     
-    async deletaProduto(produto: Produto): Promise<boolean> {
-        const produtoModel = ProdutoMapperDb.entityToModel(produto) as ProdutoModel
+    async deletaProduto(idProduto: number): Promise<boolean> {
         await ProdutoModel.destroy({
             where: {
-                id: produtoModel.get().id
+                id: idProduto
             }
         })
         return new Promise((resolve) => {

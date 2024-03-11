@@ -1,14 +1,14 @@
 import {Request} from 'express';
-import { Imagem } from '../../../../core/domain/entities/Imagem';
+import { ImagemDto } from '../dto/Imagem.dto';
 
 export class ImagemMapperApi {
 
-    static requestToEntity(request: Request): Imagem[]{
-        let imagens: Imagem[] = []
-        if(request.body.imagens && Array.isArray(request.body.imagens )){
+    static requestToDtos(request: Request): ImagemDto[]{
+        let imagens: ImagemDto[] = []
+        if(request.body.imagens && Array.isArray(request.body.imagens)){
             request.body.imagens.forEach((imagem: any) => {
                 imagens.push(
-                    new Imagem(
+                    new ImagemDto(
                         imagem.nome,
                         imagem.descricao,
                         imagem.url

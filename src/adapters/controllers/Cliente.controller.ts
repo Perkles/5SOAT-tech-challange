@@ -1,6 +1,6 @@
 import { ClienteRepository } from "../../core/applications/ports/Cliente.repository";
-import { ClienteUseCase } from "../../core/domain/useCases/ClienteUseCase";
-import { ClienteDTO, ClienteNomeEmailDTO } from "../../drivers/driver/api/dto/cliente.dto";
+import { ClienteUseCase } from "../../core/domain/useCases/Cliente.usecase";
+import { ClienteDTO, ClienteNomeEmailDTO } from "../../drivers/driver/api/dto/Cliente.dto";
 import { ClienteAdapterGateway } from "../gateways/Cliente.gateway";
 import { ClientePresenter } from "../presenters/Cliente.presenter";
 

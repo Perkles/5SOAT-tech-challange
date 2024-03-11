@@ -1,20 +1,17 @@
 import {Request} from 'express';
-import { Produto } from "../../../../core/domain/entities/Produto";
 import { ImagemMapperApi } from './Imagem.mapper.api';
-import { CategoriaProduto } from '../../../../core/domain/valueObjects/CategoriaProduto.vo';
+import { ProdutoDto } from '../dto/Produto.dto';
 
 export class ProdutoMapperApi {
-    
-    static requestToEntity(request: Request): Produto {
-        const categoriaProdutoEnum = new CategoriaProduto(request.body.categoria).retornaCategoriaProdutoEnum()
-        return new Produto(
+
+    static requestToDTO(request: Request): ProdutoDto {
+        return new ProdutoDto(
             request.body.nome,
             request.body.descricao,
-            categoriaProdutoEnum,
+            request.body.categoria,
             request.body.preco,
             request.body.tempoDePreparo,
-            ImagemMapperApi.requestToEntity(request),
-            request.body.id
+            ImagemMapperApi.requestToDtos(request)
         )
     }
 }

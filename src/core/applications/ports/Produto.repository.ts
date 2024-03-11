@@ -6,5 +6,5 @@ export interface ProdutoRepository {
     buscaPorCategoria(categoria: CategoriaProdutoEnum): Promise<Produto[] | undefined>
     salvaProduto(produto: Produto): Promise<Produto>
     editaProduto(produto: Produto): Promise<Produto>
-    deletaProduto(produto: Produto): Promise<boolean>
+    deletaProduto(id: number): Promise<boolean>
 }

@@ -1,15 +1,30 @@
 import {Request, Response} from 'express';
-import { ProdutoService } from "../../../../core/applications/services/Produto.service";
-import { ProdutoMapperApi } from "../mappers/Produto.mapper.api";
 import { DomainException } from '../../../../core/domain/base/Domain.exception';
+import { ProdutoRepository } from '../../../../core/applications/ports/Produto.repository';
+import { ProdutoAdapterController } from '../../../../adapters/controllers/Produto.controller';
+import { ProdutoMapperApi } from '../mappers/Produto.mapper.api';
+import { UseCaseException } from '../../../../adapters/exceptions/UseCase.exception';
 
-export class ProdutoController {
+export class ProdutoApiController {
     
-    constructor(private readonly produtoService: ProdutoService) { }
+    constructor(private readonly produtoRepository: ProdutoRepository) { }
 
-    async buscaProdutoPorCategoria(request: Request, response: Response) {
+    async novoProduto(request: Request, response: Response) {
         try{
-            const produtosPorCategoria = await this.produtoService.buscaPorCategoria(request.params.categoria)
+            const novoProduto = await ProdutoAdapterController.criaNovoProduto(ProdutoMapperApi.requestToDTO(request), this.produtoRepository)
+            response.status(200).json({message: "Produto cadastrado", produto: novoProduto})
+        }catch(error){
+            if(error instanceof DomainException){
+                response.status(400).json({ message: error.message })
+            }else {
+                response.status(400).json({ message: "Falha ao cadastrar produto" })
+            }
+        }
+    }
+
+    async buscaProdutosPorCategoria(request: Request, response: Response) {
+        try{
+            const produtosPorCategoria = await ProdutoAdapterController.buscaPorCategoria(request.params.categoria, this.produtoRepository)
             response.status(200).json({produtos : produtosPorCategoria})
         }catch(error){
             if(error instanceof DomainException){
@@ -20,25 +35,12 @@ export class ProdutoController {
         }
     }
 
-    async novoProduto(request: Request, response: Response) {
-        try{
-            const produto = await this.produtoService.cadastraProduto(ProdutoMapperApi.requestToEntity(request))
-            response.status(200).json({message: "Produto cadastrado", produto: produto})
-        }catch(error){
-            if(error instanceof DomainException){
-                response.status(400).json({ message: error.message })
-            }else {
-                response.status(400).json({ message: "Falha ao cadastrar produto" })
-            }
-        }
-    }
-
     async editaProduto(request: Request, response: Response) {
         try{
-            const produto = await this.produtoService.editaProduto(ProdutoMapperApi.requestToEntity(request))
+            const produto = await ProdutoAdapterController.editaProduto(request.body.id, ProdutoMapperApi.requestToDTO(request), this.produtoRepository)
             response.status(200).json({message: "Produto alterado com sucesso", produto: produto})
         }catch(error){
-            if(error instanceof DomainException){
+            if(error instanceof DomainException || error instanceof UseCaseException){
                 response.status(400).json({ message: error.message })
             }else {
                 response.status(400).json({ message: "Falha editar produto" })
@@ -48,10 +50,10 @@ export class ProdutoController {
 
     async deletaProduto(request: Request, response: Response) {
         try{
-            await this.produtoService.removeProduto(parseInt(request.params.id))
+            await ProdutoAdapterController.deletaProduto(parseInt(request.params.id), this.produtoRepository)
             response.status(200).json({message: "Deletado com sucesso"})
         }catch(error){
-            if(error instanceof DomainException){
+            if(error instanceof DomainException || error instanceof UseCaseException){
                 response.status(400).json({ message: error.message })
             }else {
                 response.status(400).json({ message: "Falha deletar produto" })
