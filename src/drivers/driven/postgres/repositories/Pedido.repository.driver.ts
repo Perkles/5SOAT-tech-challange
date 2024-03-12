@@ -1,4 +1,3 @@
-import { PedidoRepository } from "../../../../core/applications/ports/Pedido.repository";
 import { Pedido } from "../../../../core/domain/entities/Pedido";
 import { PedidoMapperDb } from "../mappers/Pedido.mapper.db";
 import { ProdutoMapperDb } from "../mappers/Produto.mapper.db";
@@ -7,7 +6,7 @@ import { ProdutoModel } from "../models/Produto.model";
 import sequelize from "../config/Database.config";
 import { ClienteModel } from "../models/Cliente.model";
 import { StatusPedidoEnum } from "../../../../core/domain/valueObjects/enum/StatusPedido.enum";
-
+import { PedidoRepository } from "../../../../core/domain/base/ports/Pedido.repository";
 
 export default class PedidoRepositoryPostgresDriver implements PedidoRepository {
 

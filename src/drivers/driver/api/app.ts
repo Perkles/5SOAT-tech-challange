@@ -18,11 +18,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const prefix = "/api/v1"
 const porta = process.env.API_PORT;
 
+
 // Repositórios
 const clienteRepositoryPostgresDriver = new ClienteRepositoryPostgresDriver()
 const produtoRepositoryPostgresDriver = new ProdutoRepositoryPostgresDriver()
 const pedidoRepositoryPostgresDriver = new PedidoRepositoryPostgresDriver()
 const filaPedidoRepositoryPostgresDrive = new FilaPedidoRepositoryPostgresDriver()
+
 
 // Api Controllers
 const clienteApiController = new ClienteApiController(clienteRepositoryPostgresDriver);
@@ -32,9 +34,7 @@ const vendasApiController = new VendasApiController(pedidoRepositoryPostgresDriv
 const filaPedidosApiController = new FilaPedidosApiController(filaPedidoRepositoryPostgresDrive)
 
 
-
 // Administrativo - Cadastro e disponibilidade dos produtos e Clientes
-
 app.post(`${prefix}/administrativo/cliente/cadastro-cpf`, clienteApiController.cadastraClienteCpf.bind(clienteApiController));
 app.post(`${prefix}/administrativo/cliente/cadastro-simples`, clienteApiController.cadastraClientePorNomeEmail.bind(clienteApiController));
 app.get(`${prefix}/administrativo/cliente/busca-cpf/:cpf`, clienteApiController.buscaPorCpf.bind(clienteApiController));
@@ -43,18 +43,16 @@ app.get(`${prefix}/administrativo/produto/busca/:categoria`, produtoApiControlle
 app.put(`${prefix}/administrativo/produto/edita`, produtoApiController.editaProduto.bind(produtoApiController));
 app.delete(`${prefix}/administrativo/produto/deleta/:id`, produtoApiController.deletaProduto.bind(produtoApiController));
 
-// Expedição - Preparo e execução do pedido e sua retirada
 
+// Expedição - Preparo e execução do pedido e sua retirada
 app.get(`${prefix}/expedicao/acompanhamento-pedido/pedidos`, filaPedidosApiController.listaPedidosParaAcompanhamento.bind(filaPedidosApiController));
 app.post(`${prefix}/expedicao/controle-producao/novo`, pedidoApiController.novoPedido.bind(pedidoApiController));
 app.post(`${prefix}/expedicao/controle-producao/atualiza-andamento-pedido`, pedidoApiController.atualizaAndamentoPedido.bind(pedidoApiController));
 
 
 // Vendas - Interação do Cliente com a interface de Vendas e pagamento
-
 app.post(`${prefix}/vendas/pagamento/callback_hook`, vendasApiController.callbackHook.bind(vendasApiController));
 app.get(`${prefix}/vendas/pagamento/status/:idPedido`, vendasApiController.retornaStatusPagamento.bind(vendasApiController));
-
 
 
 sequelize.sync();

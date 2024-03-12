@@ -1,10 +1,10 @@
 import {Request, Response} from 'express';
 import { DomainException } from '../../../../core/domain/base/Domain.exception';
 import { PedidoMapperApi } from '../mappers/Pedido.mapper.api';
-import { UseCaseException } from '../../../../adapters/exceptions/UseCase.exception';
-import { PedidoRepository } from '../../../../core/applications/ports/Pedido.repository';
+import { UseCaseException } from '../../../../adapters/exceptions/Usecase.exception';
 import { VendasAdapterController } from '../../../../adapters/controllers/Vendas.adapter.controller';
-import { FilaPedidosRepository } from '../../../../core/applications/ports/FilaPedidos.repository';
+import { FilaPedidosRepository } from '../../../../core/domain/base/ports/FilaPedidos.repository';
+import { PedidoRepository } from '../../../../core/domain/base/ports/Pedido.repository';
 
 export class VendasApiController {
     

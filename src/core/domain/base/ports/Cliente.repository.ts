@@ -1,5 +1,5 @@
-import { Cliente } from "../../domain/entities/Cliente";
-import { Cpf } from "../../domain/valueObjects/Cpf.vo";
+import { Cliente } from "../../entities/Cliente";
+import { Cpf } from "../../valueObjects/Cpf.vo";
 
 export interface ClienteRepository {
     salvaCliente(cliente: Cliente): Promise<Cliente>;

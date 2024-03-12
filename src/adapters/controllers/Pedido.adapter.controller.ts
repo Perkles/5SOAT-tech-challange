@@ -1,14 +1,14 @@
-import { ClienteRepository } from "../../core/applications/ports/Cliente.repository";
-import { FilaPedidosRepository } from "../../core/applications/ports/FilaPedidos.repository";
-import { PedidoRepository } from "../../core/applications/ports/Pedido.repository";
-import { ProdutoRepository } from "../../core/applications/ports/Produto.repository";
+import { ClienteRepository } from "../../core/domain/base/ports/Cliente.repository";
+import { FilaPedidosRepository } from "../../core/domain/base/ports/FilaPedidos.repository";
+import { PedidoRepository } from "../../core/domain/base/ports/Pedido.repository";
+import { ProdutoRepository } from "../../core/domain/base/ports/Produto.repository";
 import { PedidoUsecase } from "../../core/domain/useCases/Pedido.usecase";
 import { AtualizacaoStatusPedidoDto, NovoPedidoDto, PedidoEntradaDto } from "../../drivers/driver/api/dto/Pedido.dto";
-import { ClienteAdapterGateway } from "../gateways/Cliente.gateway";
-import { FilaPedidosAdapterGateway } from "../gateways/FilaPedidos.gateway";
-import { PedidoAdapterGateway } from "../gateways/Pedido.gateway";
-import { ProdutoAdapterGateway } from "../gateways/Produto.gateway";
-import { PedidoPresenter } from "../presenters/Pedido.presenter";
+import { ClienteAdapterGateway } from "../gateways/Cliente.adapter.gateway";
+import { FilaPedidosAdapterGateway } from "../gateways/FilaPedidos.adapter.gateway";
+import { PedidoAdapterGateway } from "../gateways/Pedido.adapter.gateway";
+import { ProdutoAdapterGateway } from "../gateways/Produto.adapter.gateway";
+import { PedidoPresenter } from "../presenters/Pedido.adapter.presenter";
 
 export class PedidoAdapterController {
 

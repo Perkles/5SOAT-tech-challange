@@ -1,7 +1,7 @@
 import {Request, Response} from 'express';
 import { DomainException } from '../../../../core/domain/base/Domain.exception';
-import { FilaPedidosRepository } from '../../../../core/applications/ports/FilaPedidos.repository';
 import { FilaPedidosAdapterController } from '../../../../adapters/controllers/FilaPedidos.adapter.controller';
+import { FilaPedidosRepository } from '../../../../core/domain/base/ports/FilaPedidos.repository';
 
 export class FilaPedidosApiController {
     

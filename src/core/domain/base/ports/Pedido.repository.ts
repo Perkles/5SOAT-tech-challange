@@ -1,5 +1,5 @@
-import { Pedido } from "../../domain/entities/Pedido";
-import { StatusPedidoEnum } from "../../domain/valueObjects/enum/StatusPedido.enum";
+import { Pedido } from "../../entities/Pedido";
+import { StatusPedidoEnum } from "../../valueObjects/enum/StatusPedido.enum";
 
 export interface PedidoRepository {
     salvaPedido(pedido: Pedido): Promise<Pedido | undefined>;

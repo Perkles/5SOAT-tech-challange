@@ -1,8 +1,8 @@
-import { UseCaseException } from "../../../adapters/exceptions/UseCase.exception";
-import { ClienteAdapterGateway } from "../../../adapters/gateways/Cliente.gateway";
-import { FilaPedidosAdapterGateway } from "../../../adapters/gateways/FilaPedidos.gateway";
-import { PedidoAdapterGateway } from "../../../adapters/gateways/Pedido.gateway";
-import { ProdutoAdapterGateway } from "../../../adapters/gateways/Produto.gateway";
+import { UseCaseException } from "../../../adapters/exceptions/Usecase.exception";
+import { ClienteAdapterGateway } from "../../../adapters/gateways/Cliente.adapter.gateway";
+import { FilaPedidosAdapterGateway } from "../../../adapters/gateways/FilaPedidos.adapter.gateway";
+import { PedidoAdapterGateway } from "../../../adapters/gateways/Pedido.adapter.gateway";
+import { ProdutoAdapterGateway } from "../../../adapters/gateways/Produto.adapter.gateway";
 import { Pedido } from "../entities/Pedido";
 import { Produto } from "../entities/Produto";
 import { PedidoFactory } from "../factories/Pedido.factory";

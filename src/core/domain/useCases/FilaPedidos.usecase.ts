@@ -1,4 +1,4 @@
-import { FilaPedidosAdapterGateway } from "../../../adapters/gateways/FilaPedidos.gateway";
+import { FilaPedidosAdapterGateway } from "../../../adapters/gateways/FilaPedidos.adapter.gateway";
 import { FilaPedidos } from "../entities/FilaPedidos";
 import { StatusPedidoEnum } from "../valueObjects/enum/StatusPedido.enum";
 

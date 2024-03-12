@@ -1,8 +1,8 @@
-import { FilaPedidosRepository } from "../../core/applications/ports/FilaPedidos.repository";
+import { FilaPedidosRepository } from "../../core/domain/base/ports/FilaPedidos.repository";
 import { FilaPedidosUsecase } from "../../core/domain/useCases/FilaPedidos.usecase";
 import { PedidoDetalhadoDto } from "../../drivers/driver/api/dto/Pedido.dto";
-import { FilaPedidosAdapterGateway } from "../gateways/FilaPedidos.gateway";
-import { FilaPedidosPresenter } from "../presenters/FilaPedidos.presenter";
+import { FilaPedidosAdapterGateway } from "../gateways/FilaPedidos.adapter.gateway";
+import { FilaPedidosPresenter } from "../presenters/FilaPedidos.adapter.presenter";
 
 export class FilaPedidosAdapterController {
 

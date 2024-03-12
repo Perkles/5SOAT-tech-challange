@@ -1,4 +1,4 @@
-import { ClienteRepository } from "../../core/applications/ports/Cliente.repository";
+import { ClienteRepository } from "../../core/domain/base/ports/Cliente.repository";
 import { Cliente } from "../../core/domain/entities/Cliente";
 import { Cpf } from "../../core/domain/valueObjects/Cpf.vo";
 import { AdapterGateway, GatewayDatasources } from "./interface/Gateway.interface";

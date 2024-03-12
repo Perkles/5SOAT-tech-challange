@@ -1,5 +1,5 @@
-import { FilaPedidos } from "../../domain/entities/FilaPedidos";
-import { Pedido } from "../../domain/entities/Pedido";
+import { FilaPedidos } from "../../entities/FilaPedidos"
+import { Pedido } from "../../entities/Pedido"
 
 export interface FilaPedidosRepository {
     adicionaPedido(pedido: Pedido): Promise<boolean>

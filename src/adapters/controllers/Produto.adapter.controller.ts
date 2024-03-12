@@ -1,8 +1,8 @@
-import { ProdutoRepository } from "../../core/applications/ports/Produto.repository";
+import { ProdutoRepository } from "../../core/domain/base/ports/Produto.repository";
 import { ProdutoUseCase } from "../../core/domain/useCases/Produto.usecase";
 import { ProdutoDto } from "../../drivers/driver/api/dto/Produto.dto";
-import { ProdutoAdapterGateway } from "../gateways/Produto.gateway";
-import { ProdutoPresenter } from "../presenters/Produto.presenter";
+import { ProdutoAdapterGateway } from "../gateways/Produto.adapter.gateway";
+import { ProdutoPresenter } from "../presenters/Produto.adapter.presenter";
 
 export class ProdutoAdapterController {
 

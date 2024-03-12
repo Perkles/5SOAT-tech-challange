@@ -1,4 +1,4 @@
-import { FilaPedidosRepository } from "../../../../core/applications/ports/FilaPedidos.repository";
+import { FilaPedidosRepository } from "../../../../core/domain/base/ports/FilaPedidos.repository";
 import { FilaPedidos } from "../../../../core/domain/entities/FilaPedidos";
 import { Pedido } from "../../../../core/domain/entities/Pedido";
 import { FilaPedidosMapperDb } from "../mappers/FilaPedidos.mapper.db";

@@ -1,8 +1,8 @@
-import { ClienteRepository } from "../../core/applications/ports/Cliente.repository";
+import { ClienteRepository } from "../../core/domain/base/ports/Cliente.repository";
 import { ClienteUseCase } from "../../core/domain/useCases/Cliente.usecase";
 import { ClienteDTO, ClienteNomeEmailDTO } from "../../drivers/driver/api/dto/Cliente.dto";
-import { ClienteAdapterGateway } from "../gateways/Cliente.gateway";
-import { ClientePresenter } from "../presenters/Cliente.presenter";
+import { ClienteAdapterGateway } from "../gateways/Cliente.adapter.gateway";
+import { ClientePresenter } from "../presenters/Cliente.adapter.presenter";
 
 export class ClienteAdapterController {
 

@@ -1,5 +1,5 @@
-import { UseCaseException } from "../../../adapters/exceptions/UseCase.exception";
-import { ProdutoAdapterGateway } from "../../../adapters/gateways/Produto.gateway";
+import { UseCaseException } from "../../../adapters/exceptions/Usecase.exception";
+import { ProdutoAdapterGateway } from "../../../adapters/gateways/Produto.adapter.gateway";
 import { ProdutoDto } from "../../../drivers/driver/api/dto/Produto.dto";
 import { Produto } from "../entities/Produto";
 import { ProdutoFactory } from "../factories/Produto.factory";

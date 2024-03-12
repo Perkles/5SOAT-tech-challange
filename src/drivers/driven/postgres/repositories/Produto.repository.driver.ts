@@ -1,4 +1,4 @@
-import { ProdutoRepository } from "../../../../core/applications/ports/Produto.repository";
+import { ProdutoRepository } from "../../../../core/domain/base/ports/Produto.repository";
 import { Produto } from "../../../../core/domain/entities/Produto";
 import { CategoriaProdutoEnum } from "../../../../core/domain/valueObjects/enum/CategoriaProduto.enum";
 import { ProdutoMapperDb } from "../mappers/Produto.mapper.db";

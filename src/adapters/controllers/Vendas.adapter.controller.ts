@@ -1,9 +1,9 @@
-import { FilaPedidosRepository } from "../../core/applications/ports/FilaPedidos.repository";
-import { PedidoRepository } from "../../core/applications/ports/Pedido.repository";
+import { FilaPedidosRepository } from "../../core/domain/base/ports/FilaPedidos.repository";
+import { PedidoRepository } from "../../core/domain/base/ports/Pedido.repository";
 import { PedidoUsecase } from "../../core/domain/useCases/Pedido.usecase";
 import { PedidoCallbackDto } from "../../drivers/driver/api/dto/Pedido.dto";
-import { FilaPedidosAdapterGateway } from "../gateways/FilaPedidos.gateway";
-import { PedidoAdapterGateway } from "../gateways/Pedido.gateway";
+import { FilaPedidosAdapterGateway } from "../gateways/FilaPedidos.adapter.gateway";
+import { PedidoAdapterGateway } from "../gateways/Pedido.adapter.gateway";
 
 export class VendasAdapterController {
     

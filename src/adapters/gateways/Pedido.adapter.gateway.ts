@@ -1,4 +1,4 @@
-import { PedidoRepository } from "../../core/applications/ports/Pedido.repository";
+import { PedidoRepository } from "../../core/domain/base/ports/Pedido.repository";
 import { Pedido } from "../../core/domain/entities/Pedido";
 import { StatusPedidoEnum } from "../../core/domain/valueObjects/enum/StatusPedido.enum";
 import { AdapterGateway, GatewayDatasources } from "./interface/Gateway.interface";

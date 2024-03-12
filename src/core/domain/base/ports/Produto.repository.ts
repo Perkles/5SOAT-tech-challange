@@ -1,5 +1,5 @@
-import { Produto } from "../../domain/entities/Produto";
-import { CategoriaProdutoEnum } from "../../domain/valueObjects/enum/CategoriaProduto.enum";
+import { Produto } from "../../entities/Produto"
+import { CategoriaProdutoEnum } from "../../valueObjects/enum/CategoriaProduto.enum"
 
 export interface ProdutoRepository {
     buscaProdutoPorId(id: number): Promise<Produto | undefined>

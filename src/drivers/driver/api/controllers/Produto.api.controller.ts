@@ -1,9 +1,9 @@
 import {Request, Response} from 'express';
 import { DomainException } from '../../../../core/domain/base/Domain.exception';
-import { ProdutoRepository } from '../../../../core/applications/ports/Produto.repository';
 import { ProdutoAdapterController } from '../../../../adapters/controllers/Produto.adapter.controller';
 import { ProdutoMapperApi } from '../mappers/Produto.mapper.api';
-import { UseCaseException } from '../../../../adapters/exceptions/UseCase.exception';
+import { UseCaseException } from '../../../../adapters/exceptions/Usecase.exception';
+import { ProdutoRepository } from '../../../../core/domain/base/ports/Produto.repository';
 
 export class ProdutoApiController {
     

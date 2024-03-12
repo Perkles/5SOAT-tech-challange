@@ -1,5 +1,5 @@
-import { UseCaseException } from "../../../adapters/exceptions/UseCase.exception";
-import { ClienteAdapterGateway } from "../../../adapters/gateways/Cliente.gateway";
+import { UseCaseException } from "../../../adapters/exceptions/Usecase.exception";
+import { ClienteAdapterGateway } from "../../../adapters/gateways/Cliente.adapter.gateway";
 import { Cliente } from "../entities/Cliente";
 import { Cpf } from "../valueObjects/Cpf.vo";
 import { Email } from "../valueObjects/Email.vo";
