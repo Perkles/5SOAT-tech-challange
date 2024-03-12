@@ -17,5 +17,13 @@ export class FilaPedidosAdapterGateway implements AdapterGateway {
 
     async listaTodosPedidosDaFilaPedidos(): Promise<FilaPedidos[] | undefined> {
         return await (this.datasource as FilaPedidosRepository).listaTodosPedidosDaFilaPedidos()
-    }    
+    }  
+    
+    async buscaFilaPedidoBaseadoNoIdDoPedido(idPedido: number): Promise<FilaPedidos | undefined> {
+        return await (this.datasource as FilaPedidosRepository).buscaFilaPedidoBaseadoNoIdDoPedido(idPedido)
+    }  
+
+    async removePedidoDaFilaPedidos(idPedido: number): Promise<boolean>{
+        return await (this.datasource as FilaPedidosRepository).removePedidoDaFilaPedidos(idPedido)
+    }
 }

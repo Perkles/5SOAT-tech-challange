@@ -17,7 +17,7 @@ export class StatusPedido extends ValueObject {
     validaStatusPedido(statusPedido: string) {
         const statusPedidoEnum: StatusPedidoEnum = StatusPedidoEnum[statusPedido as keyof typeof StatusPedidoEnum]
         if (!statusPedidoEnum) {
-            throw new DomainException('Status inválido');
+            throw new DomainException('Status Pedido inválido');
         }
         this.statusPedido = statusPedidoEnum
     }

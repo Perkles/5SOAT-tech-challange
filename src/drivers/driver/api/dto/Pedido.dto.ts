@@ -26,3 +26,8 @@ export interface ProdutoDescricaoSimplesDto {
     nome: string,
     descricao: string
 }
+
+export interface AtualizacaoStatusPedidoDto {
+    idPedido: number,
+    statusPedido: string
+}

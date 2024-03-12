@@ -27,7 +27,7 @@ const filaPedidoRepositoryPostgresDrive = new FilaPedidoRepositoryPostgresDriver
 // Api Controllers
 const clienteApiController = new ClienteApiController(clienteRepositoryPostgresDriver);
 const produtoApiController = new ProdutoApiController(produtoRepositoryPostgresDriver)
-const pedidoApiController = new PedidoApiController(pedidoRepositoryPostgresDriver, produtoRepositoryPostgresDriver, clienteRepositoryPostgresDriver)
+const pedidoApiController = new PedidoApiController(pedidoRepositoryPostgresDriver, produtoRepositoryPostgresDriver, clienteRepositoryPostgresDriver, filaPedidoRepositoryPostgresDrive)
 const vendasApiController = new VendasApiController(pedidoRepositoryPostgresDriver, filaPedidoRepositoryPostgresDrive)
 const filaPedidosApiController = new FilaPedidosApiController(filaPedidoRepositoryPostgresDrive)
 
@@ -45,16 +45,12 @@ app.delete(`${prefix}/administrativo/produto/deleta/:id`, produtoApiController.d
 
 // Expedição - Preparo e execução do pedido e sua retirada
 
-// 
 app.get(`${prefix}/expedicao/acompanhamento-pedido/pedidos`, filaPedidosApiController.listaPedidosParaAcompanhamento.bind(filaPedidosApiController));
 app.post(`${prefix}/expedicao/controle-producao/novo`, pedidoApiController.novoPedido.bind(pedidoApiController));
-// /expedicao/controle-producao/preparacao
-// /expedicao/controle-producao/pronto
-// /expedicao/controle-producao/finalizado
+app.post(`${prefix}/expedicao/controle-producao/atualiza-andamento-pedido`, pedidoApiController.atualizaAndamentoPedido.bind(pedidoApiController));
 
 
 // Vendas - Interação do Cliente com a interface de Vendas e pagamento
-
 // /vendas/pagamento -
 // /vendas/pagamento/status
 app.post(`${prefix}/vendas/pagamento/callback_hook`, vendasApiController.callbackHook.bind(vendasApiController));

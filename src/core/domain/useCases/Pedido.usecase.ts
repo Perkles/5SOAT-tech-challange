@@ -11,7 +11,7 @@ import { ClienteUseCase } from "./Cliente.usecase";
 import { ProdutoUseCase } from "./Produto.usecase";
 
 export class PedidoUsecase {
-    
+
     static async criaNovoPedido(idCliente: number, idProdutos: number[], pedidoGateway: PedidoAdapterGateway, produtoGateway: ProdutoAdapterGateway, clienteGateway: ClienteAdapterGateway): Promise<Pedido | undefined> {
         let produtos: Produto[] = []
         const clienteExistente = await ClienteUseCase.buscaClientePorId(idCliente, clienteGateway)
@@ -32,10 +32,7 @@ export class PedidoUsecase {
 
     static async atualizaStatusPagamentoCallbackHook(idPedido: number, statusPedido: string, pedidoGateway: PedidoAdapterGateway, filaPedidosGateway: FilaPedidosAdapterGateway) {
         const pedidoExistente = await this.retornaPedidoPorId(idPedido, pedidoGateway)
-        if(!pedidoExistente) {
-            throw new UseCaseException(`Pedido de ID: ${idPedido} inexistente`)
-        }
-        
+
         if(statusPedido === "aprovado"){
             await pedidoGateway.atualizaStatus(idPedido, new StatusPedido("recebido").retornaStatusPedidoEnum())
             await filaPedidosGateway.adicionaPedido(pedidoExistente)
@@ -45,6 +42,28 @@ export class PedidoUsecase {
     }
 
     static async retornaPedidoPorId(idPedido: number, pedidoGateway: PedidoAdapterGateway) {
-        return await pedidoGateway.retornaPedidoPorId(idPedido)
+        const pedidoExistente = await pedidoGateway.retornaPedidoPorId(idPedido)
+        if(!pedidoExistente) {
+            throw new UseCaseException(`Pedido de ID: ${idPedido} inexistente`)
+        }
+        return pedidoExistente
+    }
+
+    static async atualizaAndamentoPedido(idPedido: number, statusPedido: string, filaPedidosGateway: FilaPedidosAdapterGateway, pedidoGateway: PedidoAdapterGateway): Promise<boolean> {
+        const pedidoExistenteNaFilaDePedidos = await filaPedidosGateway.buscaFilaPedidoBaseadoNoIdDoPedido(idPedido)
+        if(!pedidoExistenteNaFilaDePedidos){
+            throw new UseCaseException(`Pedido de ID: ${idPedido} não consta na fila de pedidos`)
+        }
+
+        if(["pagamentoPendente", "pagamentoRejeitado", "recebido"].includes(statusPedido)){
+            throw new UseCaseException(`Status: ${statusPedido} não pode ser atualizado diretamente`)
+        }
+        if(statusPedido === "finalizado"){
+            const pedidoRemovido = await filaPedidosGateway.removePedidoDaFilaPedidos(idPedido)
+            if(pedidoRemovido){
+                return await pedidoGateway.atualizaStatus(pedidoExistenteNaFilaDePedidos.pedido.id!, new StatusPedido(statusPedido).retornaStatusPedidoEnum())
+            }
+        }
+        return await pedidoGateway.atualizaStatus(pedidoExistenteNaFilaDePedidos.pedido.id!, new StatusPedido(statusPedido).retornaStatusPedidoEnum())
     }
 }

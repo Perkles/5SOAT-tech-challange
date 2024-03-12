@@ -5,7 +5,7 @@ import { FilaPedidosMapperDb } from "../mappers/FilaPedidos.mapper.db";
 import { FilaPedidoModel } from "../models/FilaPedido.model";
 
 export default class FilaPedidoRepositoryAdapter implements FilaPedidosRepository {
-    
+
     async adicionaPedido(pedido: Pedido): Promise<boolean> {
         const filaPedido = await FilaPedidoModel.create({'PedidoModelId': pedido.id})
         return new Promise((resolve) => {
@@ -22,5 +22,30 @@ export default class FilaPedidoRepositoryAdapter implements FilaPedidosRepositor
                 resolve(undefined)
             }
         })
+    }
+
+    async buscaFilaPedidoBaseadoNoIdDoPedido(idPedido: number): Promise<FilaPedidos | undefined> {
+        const pedidoExistenteNaFila =  await FilaPedidoModel.findOne({
+            where: {
+                PedidoModelId: idPedido
+            },include : {
+                all: true,
+                nested: true
+            }
+        })
+        return new Promise((resolve) => {
+            resolve(pedidoExistenteNaFila ? FilaPedidosMapperDb.modelToEntity(pedidoExistenteNaFila) as FilaPedidos : undefined)
+        })
+    }
+
+    async removePedidoDaFilaPedidos(idPedido: number): Promise<boolean> {
+        await FilaPedidoModel.destroy({
+            where: {
+                PedidoModelId: idPedido
+            }
+        })
+        return new Promise((resolve) => {
+            resolve(true)
+        });
     }
 }
