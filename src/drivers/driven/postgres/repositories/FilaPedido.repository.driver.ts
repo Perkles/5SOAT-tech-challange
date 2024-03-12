@@ -5,7 +5,7 @@ import { FilaPedidoModel } from "../models/FilaPedido.model";
 export default class FilaPedidoRepositoryAdapter implements FilaPedidosRepository {
     
     async adicionaPedido(pedido: Pedido): Promise<boolean> {
-        await FilaPedidoModel.create({"PedidoModelId" : pedido.id})
+        const filaPedido = await FilaPedidoModel.create({'PedidoModelId': pedido.id})
         return new Promise((resolve) => {
             resolve(true)
         });

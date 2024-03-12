@@ -9,8 +9,12 @@ FilaPedidoModel.init({
     type: DataTypes.INTEGER,
     autoIncrement: true,  
     primaryKey: true
+  },
+  PedidoModelId: {
+    type: DataTypes.INTEGER,
+    unique: true
   }
 }, { tableName: "filaPedidos", sequelize });
 
-FilaPedidoModel.belongsToMany(PedidoModel, { through: 'PedidosDaFila' });
-PedidoModel.belongsToMany(FilaPedidoModel, { through: 'PedidosDaFila' });
+PedidoModel.hasOne(FilaPedidoModel);
+FilaPedidoModel.belongsTo(PedidoModel);

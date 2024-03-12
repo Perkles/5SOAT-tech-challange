@@ -4,13 +4,12 @@ import express, { Express } from "express";
 import { ClienteApiController } from "./controllers/Cliente.controller";
 import { ProdutoApiController } from "./controllers/Produto.controller";
 import { PedidoController } from "./controllers/Pedido.controller";
-import { FilaPedidosService } from "../../../core/applications/services/FilaPedido.service";
-import { FilaPedidosController } from "./controllers/FilaPedidos.controller";
 import ClienteRepositoryPostgresDriver from '../../driven/postgres/repositories/Cliente.repository.driver';
 import sequelize from '../../driven/postgres/config/Database.config';
 import ProdutoRepositoryPostgresDriver from '../../driven/postgres/repositories/Produto.repository.driver';
 import PedidoRepositoryPostgresDriver from '../../driven/postgres/repositories/Pedido.repository.driver';
-import FilaPedidoRepositoryAdapter from '../../driven/postgres/repositories/FilaPedido.repository.adapter';
+import FilaPedidoRepositoryPostgresDriver from '../../driven/postgres/repositories/FilaPedido.repository.driver';
+import { VendasApiController } from './controllers/Vendas.controller';
 
 const app: Express = express();
 app.use(bodyParser.json());
@@ -27,10 +26,9 @@ const produtoController = new ProdutoApiController(produtoRepositoryPostgresDriv
 const pedidoRepositoryPostgresDriver = new PedidoRepositoryPostgresDriver()
 const pedidoController = new PedidoController(pedidoRepositoryPostgresDriver, produtoRepositoryPostgresDriver, clienteRepositoryPostgresDriver)
 
-const filaPedidosRepository = new FilaPedidoRepositoryAdapter()
-const filaPedidosService = new FilaPedidosService(filaPedidosRepository, pedidoRepositoryPostgresDriver)
-const filaPedidosController = new FilaPedidosController(filaPedidosService)
+const filaPedidoRepositoryPostgresDrive = new FilaPedidoRepositoryPostgresDriver()
 
+const vendasApiController = new VendasApiController(pedidoRepositoryPostgresDriver, filaPedidoRepositoryPostgresDrive)
 
 // Administrativo - Cadastro e disponibilidade dos produtos e Clientes
 
@@ -55,7 +53,8 @@ app.post(`${prefix}/expedicao/controle-producao/novo`, pedidoController.novoPedi
 
 // /vendas/pagamento -
 // /vendas/pagamento/status
-// /vendas/pagamento/callback_hook
+app.post(`${prefix}/vendas/pagamento/callback_hook`, vendasApiController.callbackHook.bind(vendasApiController));
+
 
 
 sequelize.sync();

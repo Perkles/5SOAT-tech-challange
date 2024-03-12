@@ -29,7 +29,8 @@ export class PedidoMapperDb {
         return new Pedido(
             ProdutoMapperDb.modelsToEntities(Object.values(pedidoModel.ProdutoModels)) as Produto[],
             ClienteMapperDb.modelToEntity(pedidoModel.ClienteModel),
-            pedidoModel.status
+            pedidoModel.status,
+            model.id
         )   
     }
 

@@ -1,4 +1,4 @@
-import { BelongsToManyAddAssociationsMixin, BelongsToManyGetAssociationsMixin, BelongsToSetAssociationMixin, DataTypes, Model } from "sequelize";
+import { BelongsToManyAddAssociationsMixin, DataTypes, Model } from "sequelize";
 import sequelize from "../config/Database.config";
 import { ProdutoModel } from "./Produto.model";
     

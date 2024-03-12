@@ -8,3 +8,8 @@ export interface NovoPedidoDto {
     idCliente: number,
     statusPedido: string
 }
+
+export interface PedidoCallbackDto {
+    idPedido: number,
+    statusPedido: string
+}

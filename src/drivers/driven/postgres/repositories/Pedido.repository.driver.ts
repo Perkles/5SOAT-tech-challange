@@ -6,10 +6,11 @@ import { PedidoModel } from "../models/Pedido.model";
 import { ProdutoModel } from "../models/Produto.model";
 import sequelize from "../config/Database.config";
 import { ClienteModel } from "../models/Cliente.model";
+import { StatusPedidoEnum } from "../../../../core/domain/valueObjects/enum/StatusPedido.enum";
 
 
 export default class PedidoRepositoryPostgresDriver implements PedidoRepository {
-    
+
     async salvaPedido(pedido: Pedido): Promise<Pedido | undefined> {    
         const transaction = await sequelize.transaction();
         try {
@@ -41,4 +42,12 @@ export default class PedidoRepositoryPostgresDriver implements PedidoRepository 
             resolve(PedidoMapperDb.modelsToEntities(pedidosModel) as Pedido[])
         })
     }
+
+    async atualizaStatus(id: number, statusPedido: StatusPedidoEnum): Promise<boolean> {
+        const linhasAfetadas = await PedidoModel.update({status: statusPedido}, {where: {id: id}})
+        return new Promise((resolve) => {
+            resolve(linhasAfetadas[0] > 0)
+        })
+    }
+    
 }
