@@ -22,4 +22,17 @@ export class VendasApiController {
             }
         }
     }
+
+    async retornaStatusPagamento(request: Request, response: Response) {
+        try{
+            const statusPedido = await VendasAdapterController.retornaStatusPagamento(parseInt(request.params.idPedido), this.pedidoRepository)
+            response.status(200).json({statusPagamento: statusPedido})
+        }catch(error){
+            if(error instanceof DomainException || error instanceof UseCaseException){
+                response.status(400).json({ message: error.message })
+            }else {
+                response.status(400).json({ message: "Falha ao cadastrar produto" })
+            }
+        }
+    }
 }

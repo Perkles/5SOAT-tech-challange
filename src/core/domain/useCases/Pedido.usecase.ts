@@ -7,6 +7,7 @@ import { Pedido } from "../entities/Pedido";
 import { Produto } from "../entities/Produto";
 import { PedidoFactory } from "../factories/Pedido.factory";
 import { StatusPedido } from "../valueObjects/StatusPedido.vo";
+import { StatusPedidoEnum } from "../valueObjects/enum/StatusPedido.enum";
 import { ClienteUseCase } from "./Cliente.usecase";
 import { ProdutoUseCase } from "./Produto.usecase";
 
@@ -65,5 +66,14 @@ export class PedidoUsecase {
             }
         }
         return await pedidoGateway.atualizaStatus(pedidoExistenteNaFilaDePedidos.pedido.id!, new StatusPedido(statusPedido).retornaStatusPedidoEnum())
+    }
+
+    static async retornaStatusPagamento(idPedido: number, pedidoGateway: PedidoAdapterGateway): Promise<string> {
+        const pedido = await this.retornaPedidoPorId(idPedido, pedidoGateway)
+        if([StatusPedidoEnum.pagamentoPendente, StatusPedidoEnum.pagamentoRejeitado].includes(pedido.retornaStatus()) ){
+            return pedido.retornaStatus()
+        }else{
+            return StatusPedidoEnum.pagamentoFinalizado
+        }
     }
 }

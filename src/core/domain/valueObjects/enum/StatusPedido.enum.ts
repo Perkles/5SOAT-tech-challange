@@ -4,5 +4,6 @@ export enum StatusPedidoEnum {
     pronto = "pronto",
     finalizado = "finalizado",
     pagamentoPendente = "pagamentoPendente",
-    pagamentoRejeitado = "pagamentoRejeitado"
+    pagamentoRejeitado = "pagamentoRejeitado",
+    pagamentoFinalizado = "pagamentoFinalizado"
 }

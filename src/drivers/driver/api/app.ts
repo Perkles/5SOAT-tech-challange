@@ -51,9 +51,9 @@ app.post(`${prefix}/expedicao/controle-producao/atualiza-andamento-pedido`, pedi
 
 
 // Vendas - Interação do Cliente com a interface de Vendas e pagamento
-// /vendas/pagamento -
-// /vendas/pagamento/status
+
 app.post(`${prefix}/vendas/pagamento/callback_hook`, vendasApiController.callbackHook.bind(vendasApiController));
+app.get(`${prefix}/vendas/pagamento/status/:idPedido`, vendasApiController.retornaStatusPagamento.bind(vendasApiController));
 
 
 

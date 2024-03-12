@@ -10,4 +10,11 @@ export class VendasAdapterController {
     static async atualizaStatusPagamentoCallbackHook(pedidoCallbackDto: PedidoCallbackDto, pedidoRepository: PedidoRepository, filaPedidoRepository: FilaPedidosRepository) {
         await PedidoUsecase.atualizaStatusPagamentoCallbackHook(pedidoCallbackDto.idPedido, pedidoCallbackDto.statusPedido, new PedidoAdapterGateway(pedidoRepository),  new FilaPedidosAdapterGateway(filaPedidoRepository))
     }
+
+    static async retornaStatusPagamento(idPedido: number, pedidoRepository: PedidoRepository): Promise<string> {
+        const statusPedido = await PedidoUsecase.retornaStatusPagamento(idPedido, new PedidoAdapterGateway(pedidoRepository))
+        return new Promise((resolve) => {
+            resolve(statusPedido)
+        });
+    }
 }
