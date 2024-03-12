@@ -1,15 +1,16 @@
 import dotenv from 'dotenv'
 import bodyParser from 'body-parser';
 import express, { Express } from "express";
-import { ClienteApiController } from "./controllers/Cliente.controller";
-import { ProdutoApiController } from "./controllers/Produto.controller";
-import { PedidoController } from "./controllers/Pedido.controller";
+import { ClienteApiController } from "./controllers/Cliente.api.controller";
+import { ProdutoApiController } from "./controllers/Produto.api.controller";
+import { PedidoApiController } from "./controllers/Pedido.api.controller";
 import ClienteRepositoryPostgresDriver from '../../driven/postgres/repositories/Cliente.repository.driver';
 import sequelize from '../../driven/postgres/config/Database.config';
 import ProdutoRepositoryPostgresDriver from '../../driven/postgres/repositories/Produto.repository.driver';
 import PedidoRepositoryPostgresDriver from '../../driven/postgres/repositories/Pedido.repository.driver';
 import FilaPedidoRepositoryPostgresDriver from '../../driven/postgres/repositories/FilaPedido.repository.driver';
-import { VendasApiController } from './controllers/Vendas.controller';
+import { VendasApiController } from './controllers/Vendas.api.controller';
+import { FilaPedidosApiController } from './controllers/FilaPedidos.api.controller';
 
 const app: Express = express();
 app.use(bodyParser.json());
@@ -17,33 +18,35 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const prefix = "/api/v1"
 const porta = process.env.API_PORT;
 
+// Repositórios
 const clienteRepositoryPostgresDriver = new ClienteRepositoryPostgresDriver()
-const clienteController = new ClienteApiController(clienteRepositoryPostgresDriver);
-
 const produtoRepositoryPostgresDriver = new ProdutoRepositoryPostgresDriver()
-const produtoController = new ProdutoApiController(produtoRepositoryPostgresDriver)
-
 const pedidoRepositoryPostgresDriver = new PedidoRepositoryPostgresDriver()
-const pedidoController = new PedidoController(pedidoRepositoryPostgresDriver, produtoRepositoryPostgresDriver, clienteRepositoryPostgresDriver)
-
 const filaPedidoRepositoryPostgresDrive = new FilaPedidoRepositoryPostgresDriver()
 
+// Api Controllers
+const clienteApiController = new ClienteApiController(clienteRepositoryPostgresDriver);
+const produtoApiController = new ProdutoApiController(produtoRepositoryPostgresDriver)
+const pedidoApiController = new PedidoApiController(pedidoRepositoryPostgresDriver, produtoRepositoryPostgresDriver, clienteRepositoryPostgresDriver)
 const vendasApiController = new VendasApiController(pedidoRepositoryPostgresDriver, filaPedidoRepositoryPostgresDrive)
+const filaPedidosApiController = new FilaPedidosApiController(filaPedidoRepositoryPostgresDrive)
+
+
 
 // Administrativo - Cadastro e disponibilidade dos produtos e Clientes
 
-app.post(`${prefix}/administrativo/cliente/cadastro-cpf`, clienteController.cadastraClienteCpf.bind(clienteController));
-app.post(`${prefix}/administrativo/cliente/cadastro-simples`, clienteController.cadastraClientePorNomeEmail.bind(clienteController));
-app.get(`${prefix}/administrativo/cliente/busca-cpf/:cpf`, clienteController.buscaPorCpf.bind(clienteController));
-app.post(`${prefix}/administrativo/produto/novo`, produtoController.novoProduto.bind(produtoController));
-app.get(`${prefix}/administrativo/produto/busca/:categoria`, produtoController.buscaProdutosPorCategoria.bind(produtoController));
-app.put(`${prefix}/administrativo/produto/edita`, produtoController.editaProduto.bind(produtoController));
-app.delete(`${prefix}/administrativo/produto/deleta/:id`, produtoController.deletaProduto.bind(produtoController));
+app.post(`${prefix}/administrativo/cliente/cadastro-cpf`, clienteApiController.cadastraClienteCpf.bind(clienteApiController));
+app.post(`${prefix}/administrativo/cliente/cadastro-simples`, clienteApiController.cadastraClientePorNomeEmail.bind(clienteApiController));
+app.get(`${prefix}/administrativo/cliente/busca-cpf/:cpf`, clienteApiController.buscaPorCpf.bind(clienteApiController));
+app.post(`${prefix}/administrativo/produto/novo`, produtoApiController.novoProduto.bind(produtoApiController));
+app.get(`${prefix}/administrativo/produto/busca/:categoria`, produtoApiController.buscaProdutosPorCategoria.bind(produtoApiController));
+app.put(`${prefix}/administrativo/produto/edita`, produtoApiController.editaProduto.bind(produtoApiController));
+app.delete(`${prefix}/administrativo/produto/deleta/:id`, produtoApiController.deletaProduto.bind(produtoApiController));
 
 // Expedição - Preparo e execução do pedido e sua retirada
 
 // /expedicao/acompanhamento-pedido/pedidos
-app.post(`${prefix}/expedicao/controle-producao/novo`, pedidoController.novoPedido.bind(pedidoController));
+app.post(`${prefix}/expedicao/controle-producao/novo`, pedidoApiController.novoPedido.bind(pedidoApiController));
 // /expedicao/controle-producao/preparacao
 // /expedicao/controle-producao/pronto
 // /expedicao/controle-producao/finalizado

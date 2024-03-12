@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { DomainException } from '../../../../core/domain/base/Domain.exception';
-import { ClienteAdapterController } from '../../../../adapters/controllers/Cliente.controller';
+import { ClienteAdapterController } from '../../../../adapters/controllers/Cliente.adapter.controller';
 import { ClienteRepository } from '../../../../core/applications/ports/Cliente.repository';
 import { ClienteMapperApi } from '../mappers/Cliente.mapper.api';
 import { UseCaseException } from '../../../../adapters/exceptions/UseCase.exception';
