@@ -1,9 +1,9 @@
 import { Request } from 'express';
-import { PedidoCallbackDto, PedidoDto } from '../dto/Pedido.dto';
+import { PedidoCallbackDto, PedidoEntradaDto } from '../dto/Pedido.dto';
 
 export class PedidoMapperApi {
     
-    static requestToDto(request: Request): PedidoDto {
+    static requestToDto(request: Request): PedidoEntradaDto {
         return  {
             clienteId: request.body.clienteId,
             itens: request.body.itens

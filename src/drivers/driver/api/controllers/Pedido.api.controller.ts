@@ -25,17 +25,4 @@ export class PedidoApiController {
             }
         }
     }
-
-    // async listaPedidos(request: Request, response: Response) {
-    //     try{
-    //         const pedidos = await this.pedidoService.listarPedidos()
-    //         response.status(200).json({pedidos: pedidos})
-    //     }catch(error){
-    //         if(error instanceof DomainException){
-    //             response.status(400).json({ message: error.message })
-    //         }else {
-    //             response.status(400).json({ message: "Falha ao buscar pedidos" })
-    //         }
-    //     }
-    // }
 }

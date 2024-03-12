@@ -3,14 +3,17 @@ import { Entidade } from "../base/Entidade.interface";
 import { Pedido } from "./Pedido";
 
 
-export class Cliente extends AssertionConcern implements Entidade {
-    filaPedidos: Pedido[]
-    
-    constructor(filaPedidos: Pedido[]) {
+export class FilaPedidos extends AssertionConcern implements Entidade {
+    pedido: Pedido
+    dataInclusao: Date
+    ultimaAtualizacao: Date
+
+    constructor(pedido: Pedido, dataInclusao: Date, ultimaAtualizacao: Date) {
         super()
 
-        this.filaPedidos = filaPedidos
-
+        this.pedido = pedido
+        this.dataInclusao = dataInclusao
+        this.ultimaAtualizacao = ultimaAtualizacao
         this.ValidaEntidade()
     }
 

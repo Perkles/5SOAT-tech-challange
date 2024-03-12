@@ -45,7 +45,8 @@ app.delete(`${prefix}/administrativo/produto/deleta/:id`, produtoApiController.d
 
 // Expedição - Preparo e execução do pedido e sua retirada
 
-// /expedicao/acompanhamento-pedido/pedidos
+// 
+app.get(`${prefix}/expedicao/acompanhamento-pedido/pedidos`, filaPedidosApiController.listaPedidosParaAcompanhamento.bind(filaPedidosApiController));
 app.post(`${prefix}/expedicao/controle-producao/novo`, pedidoApiController.novoPedido.bind(pedidoApiController));
 // /expedicao/controle-producao/preparacao
 // /expedicao/controle-producao/pronto
