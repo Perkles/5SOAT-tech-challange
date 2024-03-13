@@ -1,0 +1,1965 @@
+{
+	"info": {
+		"_postman_id": "c9411bcb-b410-4edf-a9c2-d3b62d42e5b6",
+		"name": "mequidonalds",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "10354915"
+	},
+	"item": [
+		{
+			"name": "Administrativo",
+			"item": [
+				{
+					"name": "Cliente",
+					"item": [
+						{
+							"name": "Cadastro Cpf",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"followRedirects": true,
+								"disableUrlEncoding": false,
+								"disableCookies": false
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "User-Agent",
+										"value": "insomnia/8.6.0"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"cpf\": \"44664237090\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:3000/api/v1/administrativo/cliente/cadastro-cpf"
+							},
+							"response": [
+								{
+									"name": "Sucesso",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "User-Agent",
+												"value": "insomnia/8.6.0"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"cpf\": \"44664237090\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "http://localhost:3000/api/v1/administrativo/cliente/cadastro-cpf"
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "97"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"61-+ZdjRRPDsdd3g0SRc/U48IzxOKw\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 13 Mar 2024 02:02:54 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Cliente criado com sucesso\",\n    \"cliente\": {\n        \"nome\": null,\n        \"cpf\": \"44664237090\",\n        \"email\": null\n    }\n}"
+								},
+								{
+									"name": "Falha",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "User-Agent",
+												"value": "insomnia/8.6.0"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"cpf\": \"44664237091\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "http://localhost:3000/api/v1/administrativo/cliente/cadastro-cpf"
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "27"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"1b-RqAyTefaHmEipKO9fFLHdENNKZE\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 13 Mar 2024 02:03:35 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"CPF inválido\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Cadastro Simples",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"followRedirects": true,
+								"disableUrlEncoding": false,
+								"disableCookies": false
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "User-Agent",
+										"value": "insomnia/8.6.0"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"nome\": \"joao\",\n\t\"email\": \"joao@joao.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:3000/api/v1/administrativo/cliente/cadastro-simples"
+							},
+							"response": [
+								{
+									"name": "Sucesso",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "User-Agent",
+												"value": "insomnia/8.6.0"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"nome\": \"joao\",\n\t\"email\": \"joao@joao.com\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "http://localhost:3000/api/v1/administrativo/cliente/cadastro-simples"
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "101"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"65-EHsNWSZ2cn/fQtKwu7+Ks5elPjA\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 13 Mar 2024 02:04:00 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Cliente criado com sucesso\",\n    \"cliente\": {\n        \"nome\": \"joao\",\n        \"cpf\": null,\n        \"email\": \"joao@joao.com\"\n    }\n}"
+								},
+								{
+									"name": "Falha",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "User-Agent",
+												"value": "insomnia/8.6.0"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"nome\": \"joao\",\n\t\"email\": \"joao\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "http://localhost:3000/api/v1/administrativo/cliente/cadastro-simples"
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "44"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"2c-RqjA7/Gq8L3QAXIWeWK3l3dFP70\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 13 Mar 2024 02:04:21 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Endereço de e-mail inválido.\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Busca cliente CPF",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"followRedirects": true,
+								"disableUrlEncoding": false,
+								"disableCookies": false
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "User-Agent",
+										"value": "insomnia/8.6.0"
+									}
+								],
+								"url": "http://localhost:3000/api/v1/administrativo/cliente/busca-cpf/26192412006"
+							},
+							"response": [
+								{
+									"name": "Sucesso",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "User-Agent",
+												"value": "insomnia/8.6.0"
+											}
+										],
+										"url": "http://localhost:3000/api/v1/administrativo/cliente/busca-cpf/44664237091"
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "58"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"3a-n7QjKKw/b/EneG78+ngOsUQQ4lA\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 13 Mar 2024 02:04:43 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"cliente\": {\n        \"nome\": null,\n        \"cpf\": \"44664237090\",\n        \"email\": null\n    }\n}"
+								},
+								{
+									"name": "Falha",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "User-Agent",
+												"value": "insomnia/8.6.0"
+											}
+										],
+										"url": "http://localhost:3000/api/v1/administrativo/cliente/busca-cpf/44664237091"
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "27"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"1b-RqAyTefaHmEipKO9fFLHdENNKZE\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 13 Mar 2024 02:04:55 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"CPF inválido\"\n}"
+								},
+								{
+									"name": "Vazio",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "User-Agent",
+												"value": "insomnia/8.6.0"
+											}
+										],
+										"url": "http://localhost:3000/api/v1/administrativo/cliente/busca-cpf/26192412006"
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "2"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"2-vyGp6PvFo4RvsFtPoIWeCReyIC8\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 13 Mar 2024 02:05:22 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Produto",
+					"item": [
+						{
+							"name": "Cadastra Produto",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"followRedirects": true,
+								"disableUrlEncoding": false,
+								"disableCookies": false
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "User-Agent",
+										"value": "insomnia/8.6.0"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"nome\": \"Hamburguer\",\n\t\"descricao\": \"Bife + Salada + Pão\",\n\t\"categoria\": \"lanche\",\n\t\"preco\": 20,\n\t\"tempoDePreparo\": 15,\n\t\"imagens\": [\n\t\t{\n\t\t\t\"nome\": \"hamburguer.png\",\n\t\t\t\"descricao\": \"Um hamburguer overpriced de gosto duvidoso\",\n\t\t\t\"url\": \"http://mcdonalds.com/hamburguer/genuino\"\n\t\t}\n\t]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:3000/api/v1/administrativo/produto/novo"
+							},
+							"response": [
+								{
+									"name": "Sucesso",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "User-Agent",
+												"value": "insomnia/8.6.0"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"nome\": \"Hamburguer\",\n\t\"descricao\": \"Bife + Salada + Pão\",\n\t\"categoria\": \"lanche\",\n\t\"preco\": 20,\n\t\"tempoDePreparo\": 15,\n\t\"imagens\": [\n\t\t{\n\t\t\t\"nome\": \"hamburguer.png\",\n\t\t\t\"descricao\": \"Um hamburguer overpriced de gosto duvidoso\",\n\t\t\t\"url\": \"http://mcdonalds.com/hamburguer/genuino\"\n\t\t}\n\t]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "http://localhost:3000/api/v1/administrativo/produto/novo"
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "294"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"126-m5m7xh3T9L2IUJ4df6ycYCigAes\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 13 Mar 2024 02:09:04 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Produto cadastrado\",\n    \"produto\": {\n        \"nome\": \"Hamburguer\",\n        \"descricao\": \"Bife + Salada + Pão\",\n        \"categoria\": \"lanche\",\n        \"preco\": 20,\n        \"tempoDePreparo\": 15,\n        \"imagens\": [\n            {\n                \"nome\": \"hamburguer.png\",\n                \"descricao\": \"Um hamburguer overpriced de gosto duvidoso\",\n                \"url\": \"http://mcdonalds.com/hamburguer/genuino\"\n            }\n        ]\n    }\n}"
+								},
+								{
+									"name": "Falha - Categoria",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "User-Agent",
+												"value": "insomnia/8.6.0"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"nome\": \"Hamburguer\",\n\t\"descricao\": \"Bife + Salada + Pão\",\n\t\"categoria\": \"abobora\",\n\t\"preco\": 20,\n\t\"tempoDePreparo\": 15,\n\t\"imagens\": [\n\t\t{\n\t\t\t\"nome\": \"hamburguer.png\",\n\t\t\t\"descricao\": \"Um hamburguer overpriced de gosto duvidoso\",\n\t\t\t\"url\": \"http://mcdonalds.com/hamburguer/genuino\"\n\t\t}\n\t]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "http://localhost:3000/api/v1/administrativo/produto/novo"
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "33"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"21-zCYzSB01e9noTN23LSGpNqCZTH4\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 13 Mar 2024 02:09:23 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Categoria inválida\"\n}"
+								},
+								{
+									"name": "Falha - Tempo preparo",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "User-Agent",
+												"value": "insomnia/8.6.0"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"nome\": \"Hamburguer\",\n\t\"descricao\": \"Bife + Salada + Pão\",\n\t\"categoria\": \"lanche\",\n\t\"preco\": 0,\n\t\"tempoDePreparo\": -1,\n\t\"imagens\": [\n\t\t{\n\t\t\t\"nome\": \"hamburguer.png\",\n\t\t\t\"descricao\": \"Um hamburguer overpriced de gosto duvidoso\",\n\t\t\t\"url\": \"http://mcdonalds.com/hamburguer/genuino\"\n\t\t}\n\t]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "http://localhost:3000/api/v1/administrativo/produto/novo"
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "63"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"3f-02M6OOHwAfVK7QhfOTofol6mbdQ\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 13 Mar 2024 02:09:51 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Tempo de preparo do produto nao pode ser negativo\"\n}"
+								},
+								{
+									"name": "Falha - Preço produto",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "User-Agent",
+												"value": "insomnia/8.6.0"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"nome\": \"Hamburguer\",\n\t\"descricao\": \"Bife + Salada + Pão\",\n\t\"categoria\": \"lanche\",\n\t\"preco\": -1,\n\t\"tempoDePreparo\": 15,\n\t\"imagens\": [\n\t\t{\n\t\t\t\"nome\": \"hamburguer.png\",\n\t\t\t\"descricao\": \"Um hamburguer overpriced de gosto duvidoso\",\n\t\t\t\"url\": \"http://mcdonalds.com/hamburguer/genuino\"\n\t\t}\n\t]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "http://localhost:3000/api/v1/administrativo/produto/novo"
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "53"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"35-kQVyq2iJiTEEK6/jxsEqHR8vGuI\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 13 Mar 2024 02:10:10 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Preço do produto nao pode ser negativo\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Busca",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"followRedirects": true,
+								"disableUrlEncoding": false,
+								"disableCookies": false
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "User-Agent",
+										"value": "insomnia/8.6.0"
+									}
+								],
+								"url": "http://localhost:3000/api/v1/administrativo/produto/busca/lanche"
+							},
+							"response": [
+								{
+									"name": "Sucesso",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "User-Agent",
+												"value": "insomnia/8.6.0"
+											}
+										],
+										"url": "http://localhost:3000/api/v1/administrativo/produto/busca/abobora"
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "265"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"109-snCKV/JQSIEJn4E7BveLgwaV8T8\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 13 Mar 2024 02:12:55 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"produtos\": [\n        {\n            \"nome\": \"Hamburguer\",\n            \"descricao\": \"Bife + Salada + Pão\",\n            \"categoria\": \"lanche\",\n            \"preco\": 0,\n            \"tempoDePreparo\": 15,\n            \"imagens\": [\n                {\n                    \"nome\": \"hamburguer.png\",\n                    \"descricao\": \"Um hamburguer overpriced de gosto duvidoso\",\n                    \"url\": \"http://mcdonalds.com/hamburguer/genuino\"\n                }\n            ]\n        }\n    ]\n}"
+								},
+								{
+									"name": "Falha - Categoria",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "User-Agent",
+												"value": "insomnia/8.6.0"
+											}
+										],
+										"url": "http://localhost:3000/api/v1/administrativo/produto/busca/abobora"
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "33"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"21-zCYzSB01e9noTN23LSGpNqCZTH4\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 13 Mar 2024 02:13:10 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Categoria inválida\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Edita Produto",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"followRedirects": true,
+								"disableUrlEncoding": false,
+								"disableCookies": false
+							},
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "User-Agent",
+										"value": "insomnia/8.6.0"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"id\": 4,\n\t\"nome\": \"Hamburguer\",\n\t\"descricao\": \"Comida\",\n\t\"categoria\": \"lanche\",\n\t\"preco\": 130,\n\t\"tempoDePreparo\": 5\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:3000/api/v1/administrativo/produto/edita"
+							},
+							"response": [
+								{
+									"name": "Sucesso",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "User-Agent",
+												"value": "insomnia/8.6.0"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"id\": 4,\n\t\"nome\": \"Hamburguer\",\n\t\"descricao\": \"Comida\",\n\t\"categoria\": \"lanche\",\n\t\"preco\": 130,\n\t\"tempoDePreparo\": 5\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "http://localhost:3000/api/v1/administrativo/produto/edita"
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "160"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"a0-AgDD9O9fyF03zhR5WTrkER8Gi0U\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 13 Mar 2024 02:16:00 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Produto alterado com sucesso\",\n    \"produto\": {\n        \"nome\": \"Hamburguer\",\n        \"descricao\": \"Comida\",\n        \"categoria\": \"lanche\",\n        \"preco\": 130,\n        \"tempoDePreparo\": 5,\n        \"imagens\": []\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Deleta",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"followRedirects": true,
+								"disableUrlEncoding": false,
+								"disableCookies": false
+							},
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "User-Agent",
+										"value": "insomnia/8.6.0"
+									}
+								],
+								"url": "http://localhost:3000/api/v1/administrativo/produto/deleta/3"
+							},
+							"response": [
+								{
+									"name": "Sucesso",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "User-Agent",
+												"value": "insomnia/8.6.0"
+											}
+										],
+										"url": "http://localhost:3000/api/v1/administrativo/produto/deleta/1"
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "34"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"22-Y73WXY9loXpAUla02y9w79Bz7RA\""
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 13 Mar 2024 02:12:17 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Deletado com sucesso\"\n}"
+								}
+							]
+						}
+					]
+				}
+			],
+			"description": "Gerencia o cadastro e disponibilidade dos produtos e Clientes"
+		},
+		{
+			"name": "Expedição",
+			"item": [
+				{
+					"name": "Novo Pedido",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": true,
+						"disableUrlEncoding": false,
+						"disableCookies": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "User-Agent",
+								"value": "insomnia/8.6.0"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"clienteId\": 1,\n\t\"itens\": [1]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/api/v1/expedicao/controle-producao/novo"
+					},
+					"response": [
+						{
+							"name": "Sucesso",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "User-Agent",
+										"value": "insomnia/8.6.0"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"clienteId\": 1,\n\t\"itens\": [4]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:3000/api/v1/expedicao/controle-producao/novo"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "104"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"68-LE4dDFiyunDISaow96ZBKwDt1Xo\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 13 Mar 2024 02:17:11 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Pedido Cadastrado\",\n    \"pedido\": {\n        \"idPedido\": 1,\n        \"idCliente\": 1,\n        \"statusPedido\": \"pagamentoPendente\"\n    }\n}"
+						},
+						{
+							"name": "Falha - Produto",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "User-Agent",
+										"value": "insomnia/8.6.0"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"clienteId\": 1,\n\t\"itens\": [1]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:3000/api/v1/expedicao/controle-producao/novo"
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "42"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2a-S5doTFvyPYCuT41Nnoq6bOm8g7s\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 13 Mar 2024 02:16:34 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Produto de ID: 1 inexistente\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Lista Pedidos Acompanhamento",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": []
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": true,
+						"disableUrlEncoding": false,
+						"disableCookies": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "User-Agent",
+								"value": "insomnia/8.6.0"
+							}
+						],
+						"url": "http://localhost:3000/api/v1/expedicao/acompanhamento-pedido/pedidos"
+					},
+					"response": [
+						{
+							"name": "Sucesso",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "User-Agent",
+										"value": "insomnia/8.6.0"
+									}
+								],
+								"url": "http://localhost:3000/api/v1/expedicao/acompanhamento-pedido/pedidos"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "184"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b8-pT2/SaouWtcRqO9WYp1dXf67YyU\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 13 Mar 2024 02:39:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"listaDePedidos\": [\n        {\n            \"idPedido\": 1,\n            \"idCliente\": 1,\n            \"statusPedido\": \"recebido\",\n            \"dataInclusao\": \"2024-03-13T02:30:46.360Z\",\n            \"itens\": [\n                {\n                    \"nome\": \"Hamburguer\",\n                    \"descricao\": \"Bife + Salada + Pão\"\n                }\n            ]\n        }\n    ]\n}"
+						},
+						{
+							"name": "Falha - Nenhum produto",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "User-Agent",
+										"value": "insomnia/8.6.0"
+									}
+								],
+								"url": "http://localhost:3000/api/v1/expedicao/acompanhamento-pedido/pedidos"
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "57"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"39-6ZEtqCz5UJo1AeDvrFprEJlTMYo\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 13 Mar 2024 02:28:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Nenhum pedido cadastrado na fila de pedidos\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Atualiza Status Pedido",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": true,
+						"disableUrlEncoding": false,
+						"disableCookies": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "User-Agent",
+								"value": "insomnia/8.6.0"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"idPedido\": 1,\n\t\"status\": \"emPreparacao\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/api/v1/expedicao/controle-producao/atualiza-andamento-pedido"
+					},
+					"response": [
+						{
+							"name": "Sucesso",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "User-Agent",
+										"value": "insomnia/8.6.0"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"idPedido\": 1,\n\t\"status\": \"emPreparacao\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:3000/api/v1/expedicao/controle-producao/atualiza-andamento-pedido"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "31"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1f-1pXFVnlmnSf7MWXgd29FCMesNDM\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 13 Mar 2024 02:40:52 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Status atualizado\"\n}"
+						},
+						{
+							"name": "Falha - status",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "User-Agent",
+										"value": "insomnia/8.6.0"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"idPedido\": 1,\n\t\"status\": \"recebido\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:3000/api/v1/expedicao/controle-producao/atualiza-andamento-pedido"
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "67"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"43-PgwG//lROU1iwMMzSN4rbxsuOsY\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 13 Mar 2024 02:41:26 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Status: recebido não pode ser atualizado diretamente\"\n}"
+						}
+					]
+				}
+			],
+			"description": "Trata do preparo e execução do Pedido e sua Retirada"
+		},
+		{
+			"name": "Vendas",
+			"item": [
+				{
+					"name": "Callback hook",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": true,
+						"disableUrlEncoding": false,
+						"disableCookies": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "User-Agent",
+								"value": "insomnia/8.6.0"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"idPedido\": 1,\n\t\"status\": \"aprovado\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/api/v1/vendas/pagamento/callback_hook"
+					},
+					"response": [
+						{
+							"name": "Sucesso",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "User-Agent",
+										"value": "insomnia/8.6.0"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"idPedido\": 1,\n\t\"status\": \"aprovado\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:3000/api/v1/vendas/pagamento/callback_hook"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "31"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1f-KOu+UvYztZs2nf2PiP1ji2kInDs\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 13 Mar 2024 02:30:46 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Pedido atualizado\"\n}"
+						},
+						{
+							"name": "Falha",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "User-Agent",
+										"value": "insomnia/8.6.0"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"idPedido\": 1,\n\t\"status\": \"nada\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:3000/api/v1/vendas/pagamento/callback_hook"
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "38"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"26-dItJbc8fGPEF8hKckCzQEVxrCng\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 13 Mar 2024 02:36:45 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Callback status invalido\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Status pagamento",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": true,
+						"disableUrlEncoding": false,
+						"disableCookies": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "User-Agent",
+								"value": "insomnia/8.6.0"
+							}
+						],
+						"url": "http://localhost:3000/api/v1/vendas/pagamento/status/1"
+					},
+					"response": [
+						{
+							"name": "Sucesso",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "User-Agent",
+										"value": "insomnia/8.6.0"
+									}
+								],
+								"url": "http://localhost:3000/api/v1/vendas/pagamento/status/1"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "41"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"29-3x0SFFSB980JpTusHV3PkgMFOEc\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 13 Mar 2024 02:37:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusPagamento\": \"pagamentoFinalizado\"\n}"
+						},
+						{
+							"name": "Falha",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "User-Agent",
+										"value": "insomnia/8.6.0"
+									}
+								],
+								"url": "http://localhost:3000/api/v1/vendas/pagamento/status/123"
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "43"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2b-JMpfzR//0soTJKa+Ahqr86+h2Fo\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 13 Mar 2024 02:37:52 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Pedido de ID: 123 inexistente\"\n}"
+						}
+					]
+				}
+			],
+			"description": "Trata da interação do Cliente com a Interface de Vendas e seu Pagamento"
+		}
+	]
+}
