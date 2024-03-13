@@ -33,12 +33,13 @@ export class PedidoUsecase {
 
     static async atualizaStatusPagamentoCallbackHook(idPedido: number, statusPedido: string, pedidoGateway: PedidoAdapterGateway, filaPedidosGateway: FilaPedidosAdapterGateway) {
         const pedidoExistente = await this.retornaPedidoPorId(idPedido, pedidoGateway)
-
         if(statusPedido === "aprovado"){
             await pedidoGateway.atualizaStatus(idPedido, new StatusPedido("recebido").retornaStatusPedidoEnum())
             await filaPedidosGateway.adicionaPedido(pedidoExistente)
         }else if(statusPedido === "reprovado"){
             await pedidoGateway.atualizaStatus(idPedido, new StatusPedido("pagamentoRejeitado").retornaStatusPedidoEnum())
+        }else{
+            throw new UseCaseException(`Callback status invalido`)
         }
     }
 
@@ -56,7 +57,7 @@ export class PedidoUsecase {
             throw new UseCaseException(`Pedido de ID: ${idPedido} não consta na fila de pedidos`)
         }
 
-        if(["pagamentoPendente", "pagamentoRejeitado", "recebido"].includes(statusPedido)){
+        if(["pagamentoPendente", "pagamentoRejeitado", "pagamentoFinalizado", "recebido"].includes(statusPedido)){
             throw new UseCaseException(`Status: ${statusPedido} não pode ser atualizado diretamente`)
         }
         if(statusPedido === "finalizado"){
